@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowControllerr">
+   <children>
+      <Label layoutX="18.0" layoutY="73.0" prefHeight="17.0" prefWidth="154.0" text="Welcome to UniLink!" />
+      <Label layoutX="187.0" layoutY="73.0" prefHeight="17.0" prefWidth="53.0" text="Your ID :" />
+      <Label fx:id="displayStudentId" layoutX="240.0" layoutY="73.0" prefHeight="17.0" prefWidth="44.0" />
+      <Button fx:id="logOutBtn" layoutX="524.0" layoutY="68.0" mnemonicParsing="false" onAction="#logOut" prefHeight="21.0" prefWidth="53.0" text="Log out">
+         <font>
+            <Font size="10.0" />
+         </font></Button>
+      <ToolBar layoutX="2.0" layoutY="29.0" prefHeight="38.0" prefWidth="642.0">
+        <items>
+          <Button fx:id="newEventButton" mnemonicParsing="false" onAction="#openCreateEventWindow" text="New Event Post">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button fx:id="newSaleButton" mnemonicParsing="false" onAction="#openCreateSaleWindow" text="New Sale Post">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button fx:id="newJobButton" mnemonicParsing="false" onAction="#openCreateJobWindow" text="New Job Post">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Label text="Type">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <MenuButton cache="true" mnemonicParsing="false" text="-">
+              <items>
+                <MenuItem fx:id="eventPosts" mnemonicParsing="false" onAction="#showEventPosts" text="Event" />
+                <MenuItem fx:id="salePosts" mnemonicParsing="false" onAction="#showSalePosts" text="Sale" />
+                  <MenuItem fx:id="jobPosts" mnemonicParsing="false" onAction="#showJobPosts" text="Job" />
+                  <MenuItem fx:id="allPosts" mnemonicParsing="false" onAction="#showAllPosts" text="All" />
+              </items>
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </MenuButton>
+            <Label text="Status">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <MenuButton cache="true" mnemonicParsing="false" text="-">
+               <items>
+                  <MenuItem fx:id="openPosts" mnemonicParsing="false" onAction="#showOpenPosts" text="Open" />
+                  <MenuItem fx:id="closePosts" mnemonicParsing="false" onAction="#showClosePosts" text="Close" />
+                  <MenuItem fx:id="allPostStatus" mnemonicParsing="false" onAction="#showAllPostStatus" text="All" />
+               </items>
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </MenuButton>
+            <Label text="Creator">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <MenuButton mnemonicParsing="false" text="All">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Me" />
+               </items>
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </MenuButton>
+        </items>
+      </ToolBar>
+      <MenuBar layoutX="-2.0" prefHeight="30.0" prefWidth="660.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="UniLink">
+            <items>
+              <MenuItem fx:id="developerInfo" mnemonicParsing="false" onAction="#showDeveloperInfo" text="Developer Info" />
+                  <MenuItem mnemonicParsing="false" text="Quit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Data">
+            <items>
+              <MenuItem fx:id="exportData" mnemonicParsing="false" onAction="#exportAllData" text="Export" />
+                  <MenuItem fx:id="importData" mnemonicParsing="false" onAction="#importAllData" text="Import" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ScrollPane fx:id="postPane" layoutX="2.0" layoutY="92.0" prefHeight="433.0" prefWidth="642.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="433.0" prefWidth="639.0">
+               <children>
+                  <ListView fx:id="postsList" prefHeight="433.0" prefWidth="642.0" />
+                  <HBox fx:id="eventBox" layoutY="-2.0" prefHeight="145.0" prefWidth="624.0">
+                     <children>
+                        <ImageView fx:id="eventImage" fitHeight="133.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/no_image_available.png" />
+                           </image>
+                        </ImageView>
+                        <VBox fx:id="eventDetailsP" prefHeight="141.0" prefWidth="143.0">
+                           <children>
+                              <Label fx:id="eventId" prefHeight="12.0" prefWidth="52.0" text="Eve 001">
+                                 <VBox.margin>
+                                    <Insets bottom="-3.0" left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="eventDescription" prefHeight="20.0" prefWidth="151.0" text="Road Trip to the beach">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="eventStatus" prefHeight="17.0" prefWidth="133.0" text="OPEN">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="venue" prefHeight="19.0" prefWidth="127.0" text="Great Ocean Road">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="25.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets right="-50.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox fx:id="eventDetailsS" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="121.0">
+                           <HBox.margin>
+                              <Insets left="100.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label fx:id="eventTitle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="118.0" text="Road Trip">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="eventCreatorid" prefHeight="17.0" prefWidth="82.0" text="S2">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="date" prefHeight="19.0" prefWidth="114.0" text="11/11/2020">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="capacity" prefHeight="17.0" prefWidth="86.0" text="23">
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <HBox fx:id="eventButtons" prefHeight="144.0" prefWidth="199.0">
+                           <children>
+                              <Button fx:id="eventReply" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#replyToEvent" prefHeight="25.0" prefWidth="53.0" text="Reply">
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="60.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="moreEventDetails" mnemonicParsing="false" onAction="#showEventDetails" prefHeight="24.0" prefWidth="94.0" text="More Details">
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="60.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="-20.0" />
+                           </HBox.margin>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="saleBox" layoutX="8.0" layoutY="136.0" prefHeight="145.0" prefWidth="624.0">
+                     <children>
+                        <ImageView fitHeight="166.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/no_image_available.png" />
+                           </image>
+                        </ImageView>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="139.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="saleId" prefHeight="17.0" prefWidth="50.0" text="SAL001">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="saleDescription" prefHeight="17.0" prefWidth="100.0" text="Apply computer for sale">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="saleStatus" prefHeight="14.0" prefWidth="120.0" text="Open">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label prefHeight="23.0" prefWidth="101.0">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="141.0" prefWidth="108.0">
+                           <HBox.margin>
+                              <Insets left="100.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label fx:id="saleTitle" prefHeight="17.0" prefWidth="103.0" text="MacBook Pro">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="saleCreatorId" prefHeight="17.0" prefWidth="101.0" text="s3">
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="minimumRaise1" prefHeight="17.0" prefWidth="102.0" text="Minimum raise" underline="true">
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="minimumRaise" prefHeight="17.0" prefWidth="102.0" text="100">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="99.0" prefWidth="194.0">
+                           <children>
+                              <Button fx:id="saleReply" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#replyToSale" prefHeight="25.0" prefWidth="53.0" text="Reply">
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="60.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="moreSaleDetails" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showSaleDetails" prefHeight="27.0" prefWidth="94.0" text="More Details">
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="60.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="-20.0" right="20.0" />
+                           </HBox.margin>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="jobBox" layoutX="8.0" layoutY="281.0" prefHeight="145.0" prefWidth="624.0">
+                     <children>
+                        <ImageView fitHeight="128.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/no_image_available.png" />
+                           </image>
+                        </ImageView>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="123.0" prefWidth="135.0">
+                           <children>
+                              <Label fx:id="jobId" prefHeight="17.0" prefWidth="50.0" text="JOB001">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="jobDescription" prefHeight="18.0" prefWidth="124.0" text="I need help moving house">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="jobStatus" prefHeight="16.0" prefWidth="118.0" text="Status">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="proposedPrice1" prefHeight="18.0" prefWidth="102.0" text="Proposed Price" underline="true">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="proposedPrice" prefHeight="18.0" prefWidth="102.0" text="200">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="129.0" prefWidth="143.0">
+                           <HBox.margin>
+                              <Insets left="45.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label fx:id="jobTitle" prefHeight="16.0" prefWidth="115.0" text="Move house">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="jobCreatorId" prefHeight="17.0" prefWidth="70.0" text="s3">
+                                 <VBox.margin>
+                                    <Insets top="25.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="102.0">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <HBox prefHeight="149.0" prefWidth="255.0">
+                           <children>
+                              <Button fx:id="jobReply" mnemonicParsing="false" onAction="#replyToJob" prefHeight="25.0" prefWidth="59.0" text="Reply">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="60.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="moreJobDetails" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showJobDetails" prefHeight="29.0" prefWidth="92.0" text="More Details">
+                                 <HBox.margin>
+                                    <Insets left="15.0" top="60.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="-6.0" />
+                           </HBox.margin>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <Label fx:id="alertsP" layoutX="293.0" layoutY="73.0" prefHeight="13.0" prefWidth="212.0" textFill="#da0707" />
+   </children>
+</AnchorPane>
